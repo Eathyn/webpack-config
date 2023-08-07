@@ -1,0 +1,17 @@
+{
+  "name": "webpack-config",
+  "version": "1.0.0",
+  "description": "webpack configuration",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "webpack --mode=development",
+    "prod": "webpack --mode=production"
+  },
+  "author": "Eathyn",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.4.8",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
