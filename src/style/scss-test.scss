@@ -1,0 +1,13 @@
+$width: 100px;
+$height: 100px;
+$bg: darkcyan;
+
+.box-3 {
+  width: $width;
+  height: $height;
+  background: $bg;
+}
+
+::placeholder {
+  color: gray;
+}
