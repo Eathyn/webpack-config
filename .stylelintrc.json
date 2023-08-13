@@ -1,0 +1,20 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "overrides": [
+    {
+      "files": ["src/**/*.scss"],
+      "customSyntax": "postcss-scss"
+    },
+    {
+      "files": ["src/**/*.less"],
+      "customSyntax": "postcss-less"
+    }
+  ],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "order/properties-order": [
+      "width",
+      "height"
+    ]
+  }
+}

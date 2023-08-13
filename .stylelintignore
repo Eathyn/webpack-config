@@ -1,0 +1,27 @@
+# Editor
+.idea
+
+# Node
+node_modules
+.env.development
+.env.production
+package.json
+package-lock.json
+
+# Bundler
+dist
+
+# Git
+.gitignore
+
+# Browser
+.browserslistrc
+
+# CSS
+postcss.config.js
+
+# Webpack
+webpack.config.js
+
+# other
+public

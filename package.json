@@ -5,7 +5,8 @@
   "main": "src/main.js",
   "scripts": {
     "dev": "webpack --mode=development",
-    "prod": "webpack --mode=production"
+    "prod": "webpack --mode=production",
+    "stylelint": "stylelint src/**/*.{css,scss,less}"
   },
   "author": "Eathyn",
   "license": "MIT",
@@ -20,11 +21,16 @@
     "less-loader": "^11.1.3",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.27",
+    "postcss-less": "^6.0.0",
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.1.1",
+    "postcss-scss": "^4.0.6",
     "sass": "^1.64.2",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
+    "stylelint": "^15.10.2",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-order": "^6.0.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   }
