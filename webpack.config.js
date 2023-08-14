@@ -59,6 +59,20 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            // 小于 10kB 的图片会被 Base64 处理
+            maxSize: 10 * 1024,
+          },
+        },
+        generator: {
+          // 将图片打包到 image 文件夹
+          filename: 'image/[hash][ext][query]',
+        },
+      },
     ],
   },
 

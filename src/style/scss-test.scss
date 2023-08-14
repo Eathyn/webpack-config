@@ -1,11 +1,21 @@
-$width: 100px;
-$height: 100px;
+$width: 300px;
+$height: 300px;
 $bg: darkcyan;
 
 .box-3 {
   width: $width;
   height: $height;
-  background: $bg;
+  background-image: url("../image/image-3.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.box-4 {
+  width: $width;
+  height: $height;
+  background-image: url("../image/image-4.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 ::placeholder {
