@@ -89,9 +89,7 @@ module.exports = {
           implementation: ImageMinimizerPlugin.imageminMinify,
           options: {
             plugins: [
-              ["gifsicle", { interlaced: true }],
-              ["jpegtran", { progressive: true }],
-              ["optipng", { optimizationLevel: 5 }],
+              ["gifsicle", { optimizationLevel: 3 }],
               [
                 "svgo",
                 {
@@ -114,6 +112,14 @@ module.exports = {
                   ],
                 },
               ],
+
+              // lossless compression
+              // ["jpegtran", { progressive: true }],
+              // ["optipng", { optimizationLevel: 5 }],
+
+              // lossy compression
+              ['mozjpeg', { quality: 20 }],
+              ['pngquant'],
             ],
           },
         },

@@ -18,6 +18,30 @@ $bg: darkcyan;
   background-repeat: no-repeat;
 }
 
+.box-5 {
+  width: $width;
+  height: $height;
+  background-image: url("../image/image-5.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.box-6 {
+  width: $width;
+  height: $height;
+  background-image: url("../image/image-6.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.box-7 {
+  width: $width;
+  height: $height;
+  background-image: url("../image/image-7.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 ::placeholder {
   color: gray;
 }
