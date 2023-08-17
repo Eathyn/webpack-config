@@ -88,7 +88,19 @@ module.exports = {
         minimizer: {
           implementation: ImageMinimizerPlugin.sharpMinify,
           options: {
-            encodeOptions: {},
+            encodeOptions: {
+              jpeg: {
+                quality: 100,
+              },
+              webp: {
+                lossless: true,
+              },
+              avif: {
+                lossless: true,
+              },
+              png: {},
+              gif: {},
+            },
           },
         },
       }),
