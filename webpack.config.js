@@ -81,28 +81,41 @@ module.exports = {
 
   optimization: {
     minimizer: [
+      // extend default minimizer, i.e. `terser-webpack-plugin` for JS
+      '...',
       // 使用 cssnano 优化和压缩 CSS。默认只有在 production 模式下才运行
       new CssMinimizerPlugin(),
       // 压缩图片
       new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.sharpMinify,
-          options: {
-            encodeOptions: {
-              jpeg: {
-                quality: 100,
+        minimizer: [
+          {
+            implementation: ImageMinimizerPlugin.sharpMinify,
+            options: {
+              encodeOptions: {
+                jpeg: {
+                  quality: 100,
+                },
+                webp: {
+                  lossless: true,
+                },
+                avif: {
+                  lossless: true,
+                },
+                png: {},
+                gif: {},
               },
-              webp: {
-                lossless: true,
-              },
-              avif: {
-                lossless: true,
-              },
-              png: {},
-              gif: {},
             },
           },
-        },
+          {
+            implementation: ImageMinimizerPlugin.svgoMinify,
+            options: {
+              encodeOptions: {
+                multipass: true,
+                plugins: ['preset-default'],
+              },
+            },
+          },
+        ]
       }),
     ],
   },
