@@ -87,35 +87,47 @@ module.exports = {
       new CssMinimizerPlugin(),
       // 压缩图片
       new ImageMinimizerPlugin({
-        minimizer: [
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            plugins: [
+              ["gifsicle", { optimizationLevel: 3 }],
+              [
+                "svgo",
+                {
+                  plugins: [
+                    {
+                      name: "preset-default",
+                      params: {
+                        overrides: {
+                          removeViewBox: false,
+                          addAttributesToSVGElement: {
+                            params: {
+                              attributes: [
+                                { xmlns: "http://www.w3.org/2000/svg" },
+                              ],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  ],
+                },
+              ],
+              ["jpegtran", { progressive: true }],
+              ["optipng", { optimizationLevel: 5 }],
+            ],
+          },
+        },
+        generator: [
           {
-            implementation: ImageMinimizerPlugin.sharpMinify,
+            preset: "webp",
+            implementation: ImageMinimizerPlugin.imageminGenerate,
             options: {
-              encodeOptions: {
-                jpeg: {
-                  quality: 100,
-                },
-                webp: {
-                  lossless: true,
-                },
-                avif: {
-                  lossless: true,
-                },
-                png: {},
-                gif: {},
-              },
+              plugins: ["imagemin-webp"],
             },
           },
-          {
-            implementation: ImageMinimizerPlugin.svgoMinify,
-            options: {
-              encodeOptions: {
-                multipass: true,
-                plugins: ['preset-default'],
-              },
-            },
-          },
-        ]
+        ],
       }),
     ],
   },
