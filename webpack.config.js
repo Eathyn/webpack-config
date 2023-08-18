@@ -88,43 +88,21 @@ module.exports = {
       // 压缩图片
       new ImageMinimizerPlugin({
         minimizer: {
-          implementation: ImageMinimizerPlugin.imageminMinify,
+          implementation: ImageMinimizerPlugin.sharpMinify,
           options: {
-            plugins: [
-              ["gifsicle", { optimizationLevel: 3 }],
-              [
-                "svgo",
-                {
-                  plugins: [
-                    {
-                      name: "preset-default",
-                      params: {
-                        overrides: {
-                          removeViewBox: false,
-                          addAttributesToSVGElement: {
-                            params: {
-                              attributes: [
-                                { xmlns: "http://www.w3.org/2000/svg" },
-                              ],
-                            },
-                          },
-                        },
-                      },
-                    },
-                  ],
-                },
-              ],
-              ["jpegtran", { progressive: true }],
-              ["optipng", { optimizationLevel: 5 }],
-            ],
+            encodeOptions: {},
           },
         },
         generator: [
           {
             preset: "webp",
-            implementation: ImageMinimizerPlugin.imageminGenerate,
+            implementation: ImageMinimizerPlugin.sharpGenerate,
             options: {
-              plugins: ["imagemin-webp"],
+              encodeOptions: {
+                webp: {
+                  quality: 90,
+                },
+              },
             },
           },
         ],
