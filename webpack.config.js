@@ -74,6 +74,11 @@ module.exports = {
           filename: 'image/[hash][ext][query]',
         },
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
     ],
   },
 
