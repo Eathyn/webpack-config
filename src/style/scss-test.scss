@@ -1,47 +1,47 @@
-$width: 300px;
-$height: 300px;
-$bg: darkcyan;
-
-.box-3 {
-  width: $width;
-  height: $height;
-  background-image: url("../image/image-3.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.box-4 {
-  width: $width;
-  height: $height;
-  background-image: url("../image/image-4.webp");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.box-5 {
-  width: $width;
-  height: $height;
-  background-image: url("../image/image-5.jpeg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.box-6 {
-  width: $width;
-  height: $height;
-  background-image: url("../image/image-6.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.box-7 {
-  width: $width;
-  height: $height;
-  background-image: url("../image/image-7.gif");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-::placeholder {
-  color: gray;
-}
+//$width: 300px;
+//$height: 300px;
+//$bg: darkcyan;
+//
+//.box-3 {
+//  width: $width;
+//  height: $height;
+//  background-image: url("../image/image-3.svg");
+//  background-size: contain;
+//  background-repeat: no-repeat;
+//}
+//
+//.box-4 {
+//  width: $width;
+//  height: $height;
+//  background-image: url("../image/image-4.webp");
+//  background-size: contain;
+//  background-repeat: no-repeat;
+//}
+//
+//.box-5 {
+//  width: $width;
+//  height: $height;
+//  background-image: url("../image/image-5.jpeg");
+//  background-size: contain;
+//  background-repeat: no-repeat;
+//}
+//
+//.box-6 {
+//  width: $width;
+//  height: $height;
+//  background-image: url("../image/image-6.png");
+//  background-size: contain;
+//  background-repeat: no-repeat;
+//}
+//
+//.box-7 {
+//  width: $width;
+//  height: $height;
+//  background-image: url("../image/image-7.gif");
+//  background-size: contain;
+//  background-repeat: no-repeat;
+//}
+//
+//::placeholder {
+//  color: gray;
+//}
