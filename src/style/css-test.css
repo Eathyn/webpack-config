@@ -17,3 +17,12 @@
 /*  color: gray; */
 
 /* } */
+
+@font-face {
+  font-family: Teko;
+  src: url("../fonts/Teko-Medium.ttf") format("truetype");
+}
+
+.font-test {
+  font-family: Teko, serif;
+}
