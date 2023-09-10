@@ -12,6 +12,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 const devMode = process.env.NODE_ENV === 'development'
 
@@ -199,20 +200,20 @@ module.exports = {
           implementation: ImageMinimizerPlugin.imageminMinify,
           options: {
             plugins: [
-              ["gifsicle", { optimizationLevel: 3 }],
+              ['gifsicle', { optimizationLevel: 3 }],
               [
-                "svgo",
+                'svgo',
                 {
                   plugins: [
                     {
-                      name: "preset-default",
+                      name: 'preset-default',
                       params: {
                         overrides: {
                           removeViewBox: false,
                           addAttributesToSVGElement: {
                             params: {
                               attributes: [
-                                { xmlns: "http://www.w3.org/2000/svg" },
+                                { xmlns: 'http://www.w3.org/2000/svg' },
                               ],
                             },
                           },
@@ -240,6 +241,7 @@ function generatePlugins(devMode) {
     new HtmlWebpackPlugin({
       template: resolve(__dirname, 'public/index.html')
     }),
+    new ESLintPlugin(),
   ]
 
   const prodModePlugin = [
