@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: Teko;
-  src: url("../fonts/Teko-Medium.ttf") format("truetype");
+  src: url('../fonts/Teko-Medium.ttf') format('truetype');
 }
 
 .font-test {
