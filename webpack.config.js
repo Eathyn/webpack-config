@@ -1,5 +1,7 @@
 // 获取 webpack 的 mode
-const index = process.argv.findIndex((arg) => arg === '--mode=development' || arg === '--mode=production')
+const index = process.argv.findIndex(
+  (arg) => arg === '--mode=development' || arg === '--mode=production',
+)
 if (index === -1) {
   throw new Error('package.json 中的 webpack 参数设置错误')
 }
@@ -239,7 +241,7 @@ function generatePlugins(devMode) {
   const basePlugins = [
     // 依照指定的 html 模板生成 html 文件，并自动引入 CSS 和 JavaScript 文件
     new HtmlWebpackPlugin({
-      template: resolve(__dirname, 'public/index.html')
+      template: resolve(__dirname, 'public/index.html'),
     }),
     new ESLintPlugin(),
   ]
@@ -248,7 +250,7 @@ function generatePlugins(devMode) {
     // 将 CSS 提取到单独的 CSS 文件
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-    })
+    }),
   ]
 
   return devMode ? basePlugins : basePlugins.concat(prodModePlugin)
