@@ -1,11 +1,21 @@
 // 获取 webpack 的 mode
-const index = process.argv.findIndex((arg) => arg === '--mode=development' || arg === '--mode=production')
+const index = process.argv.findIndex(
+  (arg) =>
+    arg === '--mode=development' ||
+    arg === '--mode=production' ||
+    arg === 'serve',
+)
 if (index === -1) {
   throw new Error('package.json 中的 webpack 参数设置错误')
 }
-const mode = process.argv[index].split('=')[1]
-// 将对应 mode 文件中的变量添加到 process.env 中
-require('dotenv').config({ path: `.env.${mode}` })
+if (
+  process.argv[index] === '--mode=development' ||
+  process.argv[index] === '--mode=production'
+) {
+  const mode = process.argv[index].split('=')[1]
+  // 将对应 mode 文件中的变量添加到 process.env 中
+  require('dotenv').config({ path: `.env.${mode}` })
+}
 
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -232,6 +242,8 @@ module.exports = {
     ],
   },
 
+  devServer: {},
+
   mode: devMode ? 'development' : 'production',
 }
 
@@ -239,7 +251,7 @@ function generatePlugins(devMode) {
   const basePlugins = [
     // 依照指定的 html 模板生成 html 文件，并自动引入 CSS 和 JavaScript 文件
     new HtmlWebpackPlugin({
-      template: resolve(__dirname, 'public/index.html')
+      template: resolve(__dirname, 'public/index.html'),
     }),
     new ESLintPlugin(),
   ]
@@ -248,7 +260,7 @@ function generatePlugins(devMode) {
     // 将 CSS 提取到单独的 CSS 文件
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-    })
+    }),
   ]
 
   return devMode ? basePlugins : basePlugins.concat(prodModePlugin)
