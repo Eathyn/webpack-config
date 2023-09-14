@@ -245,6 +245,8 @@ module.exports = {
   devServer: {},
 
   mode: devMode ? 'development' : 'production',
+
+  devtool: devMode ? 'eval-cheap-module-source-map' : 'hidden-source-map',
 }
 
 function generatePlugins(devMode) {
