@@ -23,15 +23,22 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const devMode = process.env.NODE_ENV === 'development'
 
 module.exports = {
-  entry: resolve(__dirname, 'src/main.js'),
+  entry: {
+    a: resolve(__dirname, 'src/a.js'),
+    b: resolve(__dirname, 'src/b.js'),
+    c: resolve(__dirname, 'src/c.js'),
+  },
 
   output: {
     path: resolve(__dirname, 'dist'),
-    filename: 'main.js',
+    filename: 'js/[name].bundle.js',
+    chunkFilename: 'js/[name].chunk.js',
     clean: true,
   },
 
@@ -107,6 +114,24 @@ module.exports = {
   plugins: generatePlugins(devMode),
 
   optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 0,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+          name: 'vendors',
+        },
+        default: {
+          test: /[\\/]utils[\\/]/,
+          priority: -20,
+          reuseExistingChunk: true,
+          name: 'utils',
+        },
+      },
+    },
     minimizer: [
       // extend default minimizer, i.e. `terser-webpack-plugin` for JS
       '...',
@@ -256,6 +281,9 @@ function generatePlugins(devMode) {
       template: resolve(__dirname, 'public/index.html'),
     }),
     new ESLintPlugin(),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+    }),
   ]
 
   const prodModePlugin = [
